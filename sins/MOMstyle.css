@@ -136,7 +136,7 @@ canvas#simscreen
 	height: 400px;
 	width: 545px;
 	fill: #1c87c9;
-	border: 3px solid black;
+	border: 1px solid black;
 }
 div#mydiv{
 	position:absolute;
