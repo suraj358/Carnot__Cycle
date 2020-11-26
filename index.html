@@ -11,13 +11,13 @@
         var flag  = true;
         var step  = 0;
         var x     = 0;
-        var y=80;
+        var y=0;
 
         var EI 			= 22200;
-        var len 		= 500;
+        var len 		= 850;
         var p 		    = 100
 
-        var len1 		= 500;
+        var len1 		= 850;
         var p1 		    = 200;
         var x1=0;
         var y1=0;
@@ -36,6 +36,8 @@
             // y = 250 + (p * Math.pow(x, 2) * (3 * (len / 6) - x)) / (6 * EI);
             //
             x1 = len1;
+            x2 = len2;
+            x3 = len3;
             // y1 = 250 + (p1 * Math.pow(x1, 2) * (3 * (len1 / 6) - x1)) / (6 * EI);
             ctx.clearRect(0, 0, 800, 500);
 
@@ -46,7 +48,7 @@
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
             ctx.moveTo(len, 30);
-            ctx.quadraticCurveTo( len, x,350, 350);
+            ctx.quadraticCurveTo( x, len,350, 350);
             ctx.stroke();
             ctx.closePath();
 
@@ -62,21 +64,21 @@
 
             ctx.beginPath();
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "green";
+            ctx.strokeStyle = "red";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(10, 10);
-            ctx.quadraticCurveTo(len2, x2,len, 100);
+            ctx.moveTo(10, 30);
+            ctx.quadraticCurveTo(len2/2, x2,len, 30);
             ctx.stroke();
             ctx.closePath();
 
             ctx.beginPath();
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "pink";
+            ctx.strokeStyle = "blue";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(10, 10);
-            ctx.quadraticCurveTo(len3, x3,len1, 100);
+            ctx.moveTo(10, 30);
+            ctx.quadraticCurveTo(len3, x3,len1, 30);
             ctx.stroke();
             ctx.closePath();
 
@@ -181,17 +183,17 @@
         function varchange()
         {
             // Variable r1 slider and number input types
-            $('#l1slider').slider({ max : 350, min : 50, step : 10 });		    // slider initialisation : jQuery widget
-            $('#l1spinner').spinner({ max : 350, min : 50, step : 10 });		    // number initialisation : jQuery widget
+            $('#l1slider').slider({ max : 350, min : 10, step : 10 });		    // slider initialisation : jQuery widget
+            $('#l1spinner').spinner({ max : 350, min : 10, step : 10 });		    // number initialisation : jQuery widget
 
             $('#l2slider').slider({ max : 350, min : 10, step : 10 });		    // slider initialisation : jQuery widget
             $('#l2spinner').spinner({ max : 350, min : 10, step : 10 });		    // number initialisation : jQuery widget
 
-            $('#l3slider').slider({ max :350, min : 10, step : 10});		    // slider initialisation : jQuery widget
-            $('#l3spinner').spinner({ max :350, min : 10, step : 10 });		    // number initialisation : jQuery widget
+            $('#l3slider').slider({ max :350, min : 40, step : 10});		    // slider initialisation : jQuery widget
+            $('#l3spinner').spinner({ max :350, min : 40, step : 10 });		    // number initialisation : jQuery widget
 
-            $('#l4slider').slider({ max : 350, min : 10, step : 10 });		    // slider initialisation : jQuery widget
-            $('#l4spinner').spinner({ max : 350, min : 10, step :10 });		    // number initialisation : jQuery widget
+            $('#l4slider').slider({ max : 350, min : 40, step : 10 });		    // slider initialisation : jQuery widget
+            $('#l4spinner').spinner({ max : 350, min : 40, step :10 });		    // number initialisation : jQuery widget
 
             $('#l5slider').slider({ max : 1.6, min : 1.2, step : 0.02 });		    // slider initialisation : jQuery widget
             $('#l5spinner').spinner({ max : 1.6, min : 1.2, step :0.02 });		    // number initialisation : jQuery widget
@@ -304,7 +306,7 @@
     <div id="simtitle">Carnot Cycle</div>
     <!-- Region for simulation display -->
     <!--    <div id="div">-->
-    <canvas id="simscreen"  height="400px" width="545px"  ></canvas>
+    <canvas id="simscreen"  height="380px" width="545px"  ></canvas>
 <!--    <div id="mydiv"  height="380px" width="390px"></div>-->
 <!--</div>-->
 

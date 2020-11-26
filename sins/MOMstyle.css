@@ -96,15 +96,15 @@ position: absolute;
 
 #text{
 	position:absolute;
-	left:-10px;
+	left:25px;
 	top:250px;
 	writing-mode: vertical-lr;
-	transform: rotate(270deg);
+	transform: rotate(180deg);
 }
 
 #text1{
 	position:absolute;
-	left:190px;
+	left:280px;
 	top:480px;
 	writing-mode: horizontal-tb;
 	transform: rotate(360deg);
@@ -133,7 +133,7 @@ canvas#simscreen
 	position:absolute;
 	left:45px;
 	top:100px;
-	height: 400px;
+	height: 380px;
 	width: 545px;
 	fill: #1c87c9;
 	border: 1px solid black;
