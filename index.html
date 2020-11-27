@@ -10,76 +10,70 @@
 
         var flag  = true;
         var step  = 0;
-        var x     = 30;
+
+        var x=30;
         var y=30;
+        var A=850;
 
-        // var EI 			= 22200;
-        var len 		= 850;
-        // var p 		    = 100
-
-        var len1 		= 850;
-        // var p1 		    = 200;
+        var B=850;
         var x1=0;
         var y1=0;
 
-        var len2=150;
+        var C=150;
         var x2=0;
         var y2=0;
 
-        var len3=150;
+        var D=150;
         var x3=0;
+        var y3=0;
 
         function draw() {
             var canvas = document.getElementById('simscreen');
             ctx = canvas.getContext('2d');
-
-            x = len;
-            // y = 250 + (p * Math.pow(x, 2) * (3 * (len / 6) - x)) / (6 * EI);
-            //
-            x1 = len1;
-            x2 = len2;
-            x3 = len3;
-            // y1 = 250 + (p1 * Math.pow(x1, 2) * (3 * (len1 / 6) - x1)) / (6 * EI);
+            x = A;
+            x1 = B;
+            x2 = C;
+            x3 = D;
             ctx.clearRect(0, 0, 800, 500);
 
-            // lines1
+            // line1
             ctx.beginPath();
             ctx.lineWidth = 2;
             ctx.strokeStyle = "blue";
             // ctx.lineTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(len, 350);
-            ctx.quadraticCurveTo( x, len,30, 30);
+            ctx.moveTo(A, 350);
+            ctx.quadraticCurveTo( x, A,30, 30);
             ctx.stroke();
             ctx.closePath();
-
+//line2
             ctx.beginPath();
             ctx.lineWidth = 2;
             ctx.strokeStyle = "red";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(len1, 350);
-            ctx.quadraticCurveTo( len1, x1,30, 30);
+            ctx.moveTo(B, 350);
+            ctx.quadraticCurveTo( B, x1,30, 30);
             ctx.stroke();
             ctx.closePath();
-
+//line3
             ctx.beginPath();
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "green";
+            ctx.strokeStyle = "red";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(len, 350);
-            ctx.quadraticCurveTo(len2, x2,350, 350);
+            ctx.moveTo(A, 350);
+            ctx.quadraticCurveTo(C, x2,350, 350);
             ctx.stroke();
             ctx.closePath();
-
+// line4
             ctx.beginPath();
             ctx.lineWidth = 2;
             ctx.strokeStyle = "blue";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(len1, 350);
-            ctx.quadraticCurveTo(len3, x3,350, 350);
+            ctx.moveTo(B, 350);
+            ctx.quadraticCurveTo(D, x3,350, 350);
             ctx.stroke();
             ctx.closePath();
 
@@ -110,7 +104,7 @@
             ctx.arc(465, 190, 19, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.closePath();
-
+//lines
             ctx.beginPath();
             ctx.lineWidth = "3";
             ctx.moveTo(465, 210);
@@ -129,7 +123,7 @@
             document.getElementById("p2").innerHTML = "Cold reservoir T<sub>2</sub>(K) = " + $('#l2spinner').spinner("value") + "";
             document.getElementById("p3").innerHTML = "Volume V<sub>1</sub>(m<sup>3</sup>/mol)=  " + $('#l3spinner').spinner("value") + "";
             document.getElementById("p4").innerHTML = "Volume V<sub>2</sub>(m<sup>3</sup>/mol)= " + $('#l4spinner').spinner("value") + "";
-            document.getElementById("p5").innerHTML = "Heat capacity Ratio <sub>γ</sub>= " + $('#l5spinner').spinner("value") + "";
+            // document.getElementById("p5").innerHTML = "Heat capacity Ratio <sub>γ</sub>= " + $('#l5spinner').spinner("value") + "";
         }
         function varinit()
         {
@@ -204,85 +198,78 @@
             // setting trace point coordinate arrays to empty on change of link length
 
             //Cold reservoir T1
-            $( "#l1slider" ).on(  "slide",  function( e, ui ) {$('#l1spinner').spinner("value",ui.value);varupdate();setSpinnerLength});
-            $( "#l1spinner" ).on( "spin",   function( e, ui ) {$('#l1slider').slider("value",ui.value);varupdate();setSpinnerLength});
+            $( "#l1slider" ).on(  "slide",  function( e, ui ) {$('#l1spinner').spinner("value",ui.value);varupdate();draw1});
+            $( "#l1spinner" ).on( "spin",   function( e, ui ) {$('#l1slider').slider("value",ui.value);varupdate();draw1});
             $( "#l1spinner" ).on( "change", function() {varchange() } );
 
             // Hot reservoir T2
 
-            $( "#l2slider" ).on(  "slide",  function( e, ui ) {$('#l2spinner').spinner("value",ui.value);varupdate();setSpinnerLength1();});
-            $( "#l2spinner" ).on( "spin",   function( e, ui ) {$('#l2slider').slider("value",ui.value);varupdate();setSpinnerLength1();});
+            $( "#l2slider" ).on(  "slide",  function( e, ui ) {$('#l2spinner').spinner("value",ui.value);varupdate();draw2();});
+            $( "#l2spinner" ).on( "spin",   function( e, ui ) {$('#l2slider').slider("value",ui.value);varupdate();draw2();});
             $( "#l2spinner" ).on( "change", function() {varchange() } );
 
             // Volume v1
 
-            $( "#l3slider" ).on(  "slide",  function( e, ui ) {$('#l3spinner').spinner("value",ui.value);varupdate();setSpinnerLength2();});
-            $( "#l3spinner" ).on( "spin",   function( e, ui ) {$('#l3slider').slider("value",ui.value);varupdate();setSpinnerLength2();});
+            $( "#l3slider" ).on(  "slide",  function( e, ui ) {$('#l3spinner').spinner("value",ui.value);varupdate();draw3();});
+            $( "#l3spinner" ).on( "spin",   function( e, ui ) {$('#l3slider').slider("value",ui.value);varupdate();draw3();});
             $( "#l3spinner" ).on( "change", function() {varchange() } );
 
             //Volume v2
 
-            $( "#l4slider" ).on(  "slide",  function( e, ui ) {$('#l4spinner').spinner("value",ui.value);varupdate();setSpinnerLength3();});
-            $( "#l4spinner" ).on( "spin",   function( e, ui ) {$('#l4slider').slider("value",ui.value);varupdate();setSpinnerLength3();});
+            $( "#l4slider" ).on(  "slide",  function( e, ui ) {$('#l4spinner').spinner("value",ui.value);varupdate();draw4();});
+            $( "#l4spinner" ).on( "spin",   function( e, ui ) {$('#l4slider').slider("value",ui.value);varupdate();draw4();});
             $( "#l4spinner" ).on( "change", function() {varchange() } );
 
             // Heat capacity Ratio r
 
-            $( "#l5slider" ).on(  "slide",  function( e, ui ) {
-                $('#l5spinner').spinner("value",ui.value);
-            });
-
-            $( "#l5spinner" ).on( "spin",   function( e, ui ) {
-                $('#l5slider').slider("value",ui.value);
-            });
-
-            $( "#l5spinner" ).on( "change", function() {
-                varchange() } );
-
+            $( "#l5slider" ).on(  "slide",  function( e, ui ) {$('#l5spinner').spinner("value",ui.value);});
+            $( "#l5spinner" ).on( "spin",   function( e, ui ) {$('#l5slider').slider("value",ui.value);});
+            $( "#l5spinner" ).on( "change", function() {varchange() } );
             varupdate();
         }
 
         function varupdate()
         {
             $('#l1slider').slider("value", $('#l1spinner').spinner('value'));
-            len = document.getElementById("l1spinner").value; //updating slider location with change in spinner(debug)
+            A = document.getElementById("l1spinner").value; //updating slider location with change in spinner(debug)
+            // p = document.getElementById("l1spinner").value;
             $('#l2slider').slider("value", $('#l2spinner').spinner('value'));  //updating slider location with change in spinner(debug)
-            len1 = document.getElementById("l2spinner").value;
+            B = document.getElementById("l2spinner").value;
             $('#l3slider').slider("value", $('#l3spinner').spinner('value'));  //updating slider location with change in spinner(debug)
-            len2 = document.getElementById("l3spinner").value;
+            C = document.getElementById("l3spinner").value;
             $('#l4slider').slider("value", $('#l4spinner').spinner('value'));  //updating slider location with change in spinner(debug)
-            len3 = document.getElementById("l4spinner").value;
+            D = document.getElementById("l4spinner").value;
             $('#l5slider').slider("value", $('#l5spinner').spinner('value'));  //updating slider location with change in spinner(debug)
             draw();
         }
-        function setSpinnerLength() {
-            len = document.getElementById("l1spinner").value;
-            document.getElementById("l1slider").value = len;
+        function draw1() {
+            A = document.getElementById("l1spinner").value;
+            document.getElementById("l1slider").value = A;
 
             // p = document.getElementById("l1spinner").value;
             // document.getElementById("l1slider").value = p;
             varupdate();
         }
-        function setSpinnerLength1() {
-            len1 = document.getElementById("l2spinner").value;
-            document.getElementById("l2slider").value = len1;
+        function draw2() {
+            B = document.getElementById("l2spinner").value;
+            document.getElementById("l2slider").value = B;
 
             // p = document.getElementById("l2spinner").value;
             // document.getElementById("l2slider").value = p;
             varupdate();
         }
 
-        function setSpinnerLength2() {
-            len2 = document.getElementById("l3spinner").value;
-            document.getElementById("l3slider").value = len2;
+        function draw3() {
+            C = document.getElementById("l3spinner").value;
+            document.getElementById("l3slider").value = C;
 
             // p = document.getElementById("l3spinner").value;
             // document.getElementById("l3slider").value = p;
             varupdate();
         }
-        function setSpinnerLength3() {
-            len3 = document.getElementById("l4spinner").value;
-            document.getElementById("l4slider").value = len3;
+        function draw4() {
+            D = document.getElementById("l4spinner").value;
+            document.getElementById("l4slider").value = D;
 
             // p = document.getElementById("l4spinner").value;
             // document.getElementById("l4slider").value = p;
@@ -308,80 +295,80 @@
     <!-- Region for simulation display -->
     <!--    <div id="div">-->
     <canvas id="simscreen"  height="380px" width="545px"  ></canvas>
-<!--    <div id="mydiv"  height="380px" width="390px"></div>-->
-<!--</div>-->
+    <!--    <div id="mydiv"  height="380px" width="390px"></div>-->
+    <!--</div>-->
 
-<div id="spann">
-    <span style="font-size:50px;color:black;">&#8594;</span>
-</div>
-
-<div id="text">
-    <span id="mySpan"> Pressure(kPa)</span>
-</div>
-
-<div id="text1">
-    <span id="mySpan1"> Volume (m<sup>3</sup>)</span>
-</div>
-
-<div id="text11">
-    <span id="mySpan11"> Carnot Cycle</span>
-</div>
-<div id="titleincanvas"></div>
-<!-- Region for comment / question prompts -->
-<div id="commentboxleft">
-    <p id="p1" style="line-height:0.2"></p>
-    <p id="p2" style="line-height:0.2"></p>
-    <p id="p3" style="line-height:0.2"></p>
-</div>
-
-<div id="commentboxright">
-    <p id="p4" style="line-height:0.4"></p>
-    <p id="p5" style="line-height:0.4"></p>
-    <p id="p6" style="line-height:0.4"></p>
-</div>
-
-<!-- DND-Title of region for variables display -->
-<div id="vartitle">VARIABLES</div>
-
-<!-- Region for Input parameters of simulation -->
-<div id="variables">
-    <div class="variable">
-        <div class="varname"><p title="Link Length" style="font-size:95%;">Hot T<sub>1</sub>(K)</p>
-            <input id="l1spinner"></div>
-        <div id="l1slider" ></div>
-        <br>
-        <div class="varname"><p title="Link Length" style="font-size:95%;">Cold T<sub>2</sub>(K)</p>
-            <input id="l2spinner"></div>
-        <div id="l2slider"></div>
-        <br>
-        <div class="varname"><p title="Link Length" style="font-size:95%;"> Volume V<sub>1</sub>(m<sup>3</sup>/mol)</p>
-            <input id="l3spinner"></div>
-        <div id="l3slider"></div>
-        <br>
-        <div class="varname"><p title="Link Length" style="font-size:95%;"> Volume V<sub>2</sub>(m<sup>3</sup>/mol)</p>
-            <input id="l4spinner"></div>
-        <div id="l4slider"></div>
-        <br>
-        <div class="varname"><p title="Link Length" style="font-size:95%;"> Heat Capacity <sub>γ</sub></p>
-            <input id="l5spinner"></div>
-        <div id="l5slider"></div>
-        <br>
+    <div id="spann">
+        <span style="font-size:50px;color:black;">&#8594;</span>
     </div>
-</div>
-<!-- DND-Title of region for controls display -->
-<div id="ctrltitle">CONTROLS</div>
-<!-- Region for User controls of simulation -->
-<div id="controls">
-    <img id="playpausebutton" onclick="simstate();" src="sins/blueplaydull.png" />
-    <img id="rotationbutton" onclick="location.reload();" src="sins/bluecwdull.png" />
 
-    <!--        <div class="usercheck">-->
-    <!--        <input type="checkbox" id="cb" onclick="body();" /><p id="sg">Show Graph</p>&lt;!&ndash; Checkbox to display graph&ndash;&gt;-->
-    <!--        </div>-->
+    <div id="text">
+        <span id="mySpan"> Pressure(kPa)</span>
+    </div>
 
-</div>
-<!-- DND-Copyright display-->
-<div id="copyright" title="Developer : SOLVEr"> Copyright &copy; SOLVE The Virtual Lab @ NITK Surathkal </div>
-<!-- Container div close -->
+    <div id="text1">
+        <span id="mySpan1"> Volume (m<sup>3</sup>)</span>
+    </div>
+
+    <div id="text11">
+        <span id="mySpan11"> Carnot Cycle</span>
+    </div>
+    <div id="titleincanvas"></div>
+    <!-- Region for comment / question prompts -->
+    <div id="commentboxleft">
+        <p id="p1" style="line-height:0.2"></p>
+        <p id="p2" style="line-height:0.2"></p>
+        <p id="p3" style="line-height:0.2"></p>
+    </div>
+
+    <div id="commentboxright">
+        <p id="p4" style="line-height:0.4"></p>
+        <p id="p5" style="line-height:0.4"></p>
+        <p id="p6" style="line-height:0.4"></p>
+    </div>
+
+    <!-- DND-Title of region for variables display -->
+    <div id="vartitle">VARIABLES</div>
+
+    <!-- Region for Input parameters of simulation -->
+    <div id="variables">
+        <div class="variable">
+            <div class="varname"><p title="Link Length" style="font-size:95%;">Hot T<sub>1</sub>(K)</p>
+                <input id="l1spinner"></div>
+            <div id="l1slider" ></div>
+            <br>
+            <div class="varname"><p title="Link Length" style="font-size:95%;">Cold T<sub>2</sub>(K)</p>
+                <input id="l2spinner"></div>
+            <div id="l2slider"></div>
+            <br>
+            <div class="varname"><p title="Link Length" style="font-size:95%;"> Volume V<sub>1</sub>(m<sup>3</sup>/mol)</p>
+                <input id="l3spinner"></div>
+            <div id="l3slider"></div>
+            <br>
+            <div class="varname"><p title="Link Length" style="font-size:95%;"> Volume V<sub>2</sub>(m<sup>3</sup>/mol)</p>
+                <input id="l4spinner"></div>
+            <div id="l4slider"></div>
+            <br>
+            <div class="varname"><p title="Link Length" style="font-size:95%;"> Heat Capacity <sub>γ</sub></p>
+                <input id="l5spinner"></div>
+            <div id="l5slider"></div>
+            <br>
+        </div>
+    </div>
+    <!-- DND-Title of region for controls display -->
+    <div id="ctrltitle">CONTROLS</div>
+    <!-- Region for User controls of simulation -->
+    <div id="controls">
+        <img id="playpausebutton" onclick="simstate();" src="sins/blueplaydull.png" />
+        <img id="rotationbutton" onclick="location.reload();" src="sins/bluecwdull.png" />
+
+        <!--        <div class="usercheck">-->
+        <!--        <input type="checkbox" id="cb" onclick="body();" /><p id="sg">Show Graph</p>&lt;!&ndash; Checkbox to display graph&ndash;&gt;-->
+        <!--        </div>-->
+
+    </div>
+    <!-- DND-Copyright display-->
+    <div id="copyright" title="Developer : SOLVEr"> Copyright &copy; SOLVE The Virtual Lab @ NITK Surathkal </div>
+    <!-- Container div close -->
 </body>
 </html>

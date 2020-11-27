@@ -104,7 +104,7 @@ position: absolute;
 
 #text1{
 	position:absolute;
-	left:280px;
+	left:180px;
 	top:480px;
 	writing-mode: horizontal-tb;
 	transform: rotate(360deg);
