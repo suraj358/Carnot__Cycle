@@ -96,10 +96,10 @@ position: absolute;
 
 #text{
 	position:absolute;
-	left:25px;
+	left:-10px;
 	top:250px;
 	writing-mode: vertical-lr;
-	transform: rotate(180deg);
+	transform: rotate(270deg);
 }
 
 #text1{
@@ -112,7 +112,7 @@ position: absolute;
 
 #text11{
 	position:absolute;
-	left:270px;
+	left:180px;
 	top:110px;
 	writing-mode: horizontal-tb;
 	transform: rotate(360deg);
@@ -121,11 +121,12 @@ position: absolute;
 canvas#simscreen1
 {
 	position:absolute;
-	left:30px;
-	top:250px;
-	height: 300px;
-	width: 450px;
-	border: 5px solid black;
+	left:45px;
+	top:100px;
+	height: 380px;
+	width: 545px;
+	fill: #1c87c9;
+	/*border: 1px solid black;*/
 }
 
 canvas#simscreen
@@ -134,9 +135,9 @@ canvas#simscreen
 	left:45px;
 	top:100px;
 	height: 380px;
-	width: 545px;
+	width: 380px;
 	fill: #1c87c9;
-	border: 1px solid black;
+	border: 2px solid black;
 }
 div#mydiv{
 	position:absolute;

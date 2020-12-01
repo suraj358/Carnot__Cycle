@@ -12,7 +12,7 @@
         var step  = 0;
 
         var x=30;
-        var y=30;
+        var y=100;
         var A=850;
 
         var B=850;
@@ -26,6 +26,12 @@
         var D=150;
         var x3=0;
         var y3=0;
+
+        var AB=100;
+        var BC=200;
+
+        var AB1=200;
+        var BC1=200;
 
         function draw() {
             var canvas = document.getElementById('simscreen');
@@ -42,8 +48,8 @@
             ctx.strokeStyle = "blue";
             // ctx.lineTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(A, 350);
-            ctx.quadraticCurveTo( x, A,30, 30);
+            ctx.moveTo(A, 30);
+            ctx.quadraticCurveTo(A,x, AB, BC);
             ctx.stroke();
             ctx.closePath();
 //line2
@@ -52,31 +58,49 @@
             ctx.strokeStyle = "red";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(B, 350);
-            ctx.quadraticCurveTo( B, x1,30, 30);
+            ctx.moveTo(A, 30);
+            ctx.quadraticCurveTo( A, x,AB1, BC1);
             ctx.stroke();
             ctx.closePath();
-//line3
+// //line3
             ctx.beginPath();
             ctx.lineWidth = 2;
             ctx.strokeStyle = "red";
-            // ctx.moveTo(30, 50);
+            // ctx.lineTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(A, 350);
-            ctx.quadraticCurveTo(C, x2,350, 350);
+            ctx.moveTo(350, D);
+            ctx.quadraticCurveTo(D,x3, AB, BC);
             ctx.stroke();
             ctx.closePath();
-// line4
+
             ctx.beginPath();
             ctx.lineWidth = 2;
             ctx.strokeStyle = "blue";
             // ctx.moveTo(30, 50);
             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-            ctx.moveTo(B, 350);
-            ctx.quadraticCurveTo(D, x3,350, 350);
+            ctx.moveTo(350, D);
+            ctx.quadraticCurveTo( D, x3,AB1, BC1);
             ctx.stroke();
             ctx.closePath();
-
+// // line4
+//             ctx.beginPath();
+//             ctx.lineWidth = 2;
+//             ctx.strokeStyle = "blue";
+//             // ctx.moveTo(30, 50);
+//             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
+//             ctx.moveTo(B, 350);
+//             ctx.quadraticCurveTo(D, x3,350, 350);
+//             ctx.stroke();
+//             ctx.closePath();
+            document.getElementById("p1").innerHTML = "Hot reservoir T<sub>1</sub>(K)=  " + $('#l1spinner').spinner("value") + "";
+            document.getElementById("p2").innerHTML = "Cold reservoir T<sub>2</sub>(K) = " + $('#l2spinner').spinner("value") + "";
+            document.getElementById("p3").innerHTML = "Volume V<sub>1</sub>(m<sup>3</sup>/mol)=  " + $('#l3spinner').spinner("value") + "";
+            document.getElementById("p4").innerHTML = "Volume V<sub>2</sub>(m<sup>3</sup>/mol)= " + $('#l4spinner').spinner("value") + "";
+            // document.getElementById("p5").innerHTML = "Heat capacity Ratio <sub>γ</sub>= " + $('#l5spinner').spinner("value") + "";
+        }
+        function draw0() {
+            var canvas = document.getElementById('simscreen1');
+            ctx = canvas.getContext('2d');
 
             //T1 AND T2
             ctx.beginPath();
@@ -119,11 +143,11 @@
             ctx.stroke();
             ctx.closePath();
 
-            document.getElementById("p1").innerHTML = "Hot reservoir T<sub>1</sub>(K)=  " + $('#l1spinner').spinner("value") + "";
-            document.getElementById("p2").innerHTML = "Cold reservoir T<sub>2</sub>(K) = " + $('#l2spinner').spinner("value") + "";
-            document.getElementById("p3").innerHTML = "Volume V<sub>1</sub>(m<sup>3</sup>/mol)=  " + $('#l3spinner').spinner("value") + "";
-            document.getElementById("p4").innerHTML = "Volume V<sub>2</sub>(m<sup>3</sup>/mol)= " + $('#l4spinner').spinner("value") + "";
-            // document.getElementById("p5").innerHTML = "Heat capacity Ratio <sub>γ</sub>= " + $('#l5spinner').spinner("value") + "";
+            // document.getElementById("p1").innerHTML = "Hot reservoir T<sub>1</sub>(K)=  " + $('#l1spinner').spinner("value") + "";
+            // document.getElementById("p2").innerHTML = "Cold reservoir T<sub>2</sub>(K) = " + $('#l2spinner').spinner("value") + "";
+            // document.getElementById("p3").innerHTML = "Volume V<sub>1</sub>(m<sup>3</sup>/mol)=  " + $('#l3spinner').spinner("value") + "";
+            // document.getElementById("p4").innerHTML = "Volume V<sub>2</sub>(m<sup>3</sup>/mol)= " + $('#l4spinner').spinner("value") + "";
+            // // document.getElementById("p5").innerHTML = "Heat capacity Ratio <sub>γ</sub>= " + $('#l5spinner').spinner("value") + "";
         }
         function varinit()
         {
@@ -135,8 +159,8 @@
             $('#l2spinner').spinner("value", 30);
             $('#l3slider').slider("value", 30);
             $('#l3spinner').spinner("value", 30);
-            $('#l4slider').slider("value", 30);
-            $('#l4spinner').spinner("value", 30);
+            $('#l4slider').slider("value", 350);
+            $('#l4spinner').spinner("value", 350);
             $('#l5slider').slider("value", 0);
             $('#l5spinner').spinner("value", 0);
         }
@@ -241,6 +265,7 @@
             D = document.getElementById("l4spinner").value;
             $('#l5slider').slider("value", $('#l5spinner').spinner('value'));  //updating slider location with change in spinner(debug)
             draw();
+            draw0();
         }
         function draw1() {
             A = document.getElementById("l1spinner").value;
@@ -251,8 +276,8 @@
             varupdate();
         }
         function draw2() {
-            B = document.getElementById("l2spinner").value;
-            document.getElementById("l2slider").value = B;
+            BC = document.getElementById("l2spinner").value;
+            document.getElementById("l2slider").value = BC;
 
             // p = document.getElementById("l2spinner").value;
             // document.getElementById("l2slider").value = p;
@@ -260,8 +285,8 @@
         }
 
         function draw3() {
-            C = document.getElementById("l3spinner").value;
-            document.getElementById("l3slider").value = C;
+            BC1 = document.getElementById("l3spinner").value;
+            document.getElementById("l3slider").value = BC1;
 
             // p = document.getElementById("l3spinner").value;
             // document.getElementById("l3slider").value = p;
@@ -294,9 +319,12 @@
     <div id="simtitle">Carnot Cycle</div>
     <!-- Region for simulation display -->
     <!--    <div id="div">-->
-    <canvas id="simscreen"  height="380px" width="545px"  ></canvas>
-    <!--    <div id="mydiv"  height="380px" width="390px"></div>-->
-    <!--</div>-->
+    <canvas id="simscreen"  height="380px" width="380px"  >
+    </canvas>
+    <canvas id="simscreen1"  height="380px" width="545px"  >
+    </canvas>
+    <!--        <div id="mydiv"  height="380px" width="390px"></div>-->
+    <!--    </div>-->
 
     <div id="spann">
         <span style="font-size:50px;color:black;">&#8594;</span>
