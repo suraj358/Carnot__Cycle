@@ -27,11 +27,11 @@
         var x3=0;
         var y3=0;
 
-        var AB=100;
-        var BC=200;
+        var AB=30;
+        var BC=350;
 
-        var AB1=200;
-        var BC1=200;
+        var AB1=350;
+        var BC1=350;
 
         function draw() {
             var canvas = document.getElementById('simscreen');
@@ -82,16 +82,8 @@
             ctx.quadraticCurveTo( D, x3,AB1, BC1);
             ctx.stroke();
             ctx.closePath();
-// // line4
-//             ctx.beginPath();
-//             ctx.lineWidth = 2;
-//             ctx.strokeStyle = "blue";
-//             // ctx.moveTo(30, 50);
-//             // ctx.quadraticCurveTo(len /2, 450, len/4 , y);
-//             ctx.moveTo(B, 350);
-//             ctx.quadraticCurveTo(D, x3,350, 350);
-//             ctx.stroke();
-//             ctx.closePath();
+            console.log(A);
+
             document.getElementById("p1").innerHTML = "Hot reservoir T<sub>1</sub>(K)=  " + $('#l1spinner').spinner("value") + "";
             document.getElementById("p2").innerHTML = "Cold reservoir T<sub>2</sub>(K) = " + $('#l2spinner').spinner("value") + "";
             document.getElementById("p3").innerHTML = "Volume V<sub>1</sub>(m<sup>3</sup>/mol)=  " + $('#l3spinner').spinner("value") + "";
@@ -205,11 +197,11 @@
             $('#l1slider').slider({ max : 200, min : 30, step : 1 });		    // slider initialisation : jQuery widget
             $('#l1spinner').spinner({ max : 200, min : 30, step : 1 });		    // number initialisation : jQuery widget
 
-            $('#l2slider').slider({ max : 200, min : 30, step : 1 });		    // slider initialisation : jQuery widget
-            $('#l2spinner').spinner({ max : 200, min : 30, step : 1 });		    // number initialisation : jQuery widget
+            $('#l2slider').slider({ max : 350, min : 30, step : 1 });		    // slider initialisation : jQuery widget
+            $('#l2spinner').spinner({ max : 350, min : 30, step : 1 });		    // number initialisation : jQuery widget
 
-            $('#l3slider').slider({ max : 350, min : 200, step : 1});		    // slider initialisation : jQuery widget
-            $('#l3spinner').spinner({max : 350, min : 200, step : 1 });		    // number initialisation : jQuery widget
+            $('#l3slider').slider({ max : 350, min : 30, step : 1});		    // slider initialisation : jQuery widget
+            $('#l3spinner').spinner({max : 350, min : 30, step : 1 });		    // number initialisation : jQuery widget
 
             $('#l4slider').slider({ max : 350, min : 200, step : 1 });		    // slider initialisation : jQuery widget
             $('#l4spinner').spinner({ max : 350, min : 200, step :1 });		    // number initialisation : jQuery widget
