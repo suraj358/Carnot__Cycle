@@ -88,18 +88,18 @@ position: absolute;
 
 #spann{
 	position:absolute;
-	left:530px;
-	top:260px;
+	left:518px;
+	top:268px;
 	/*padding-top: -1005px;*/
 	/*padding-left: 100px;*/
 }
 
 #text{
 	position:absolute;
-	left:-10px;
+	left:25px;
 	top:250px;
 	writing-mode: vertical-lr;
-	transform: rotate(270deg);
+	transform: rotate(180deg);
 }
 
 #text1{
@@ -124,7 +124,7 @@ canvas#simscreen1
 	left:45px;
 	top:100px;
 	height: 380px;
-	width: 545px;
+	width: 555px;
 	fill: #1c87c9;
 	/*border: 1px solid black;*/
 }

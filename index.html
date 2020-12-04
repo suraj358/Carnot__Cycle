@@ -93,23 +93,24 @@
         function draw0() {
             var canvas = document.getElementById('simscreen1');
             ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, 800, 500);
 
             //T1 AND T2
             ctx.beginPath();
             ctx.lineWidth = "5";
             ctx.strokeStyle = "red";
-            ctx.rect(425, 90, 80, 40);
-            ctx.font = "15px Arial";
-            ctx.fillText("T2", 458, 115);
+            ctx.rect(415, 90, 80, 37);
+            ctx.font = " bold 13px Arial";
+            ctx.fillText("T2", 448, 115);
             ctx.stroke();
             ctx.closePath();
 
             ctx.beginPath();
             ctx.lineWidth = "5";
             ctx.strokeStyle = "red";
-            ctx.rect(425, 250, 80, 40);
+            ctx.rect(415, 253, 80, 40);
             // ctx.font = "20px Arial";
-            ctx.fillText("T1", 458, 275);
+            ctx.fillText("T1", 448, 277);
             ctx.stroke();
             ctx.closePath();
 
@@ -117,21 +118,32 @@
             ctx.beginPath();
             ctx.lineWidth = "3";
             ctx.strokeStyle = "black";
-            ctx.arc(465, 190, 19, 0, 2 * Math.PI);
+            ctx.arc(455, 190, 19, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.closePath();
 //lines
             ctx.beginPath();
             ctx.lineWidth = "3";
-            ctx.moveTo(465, 210);
-            ctx.lineTo(465, 250);
+            ctx.moveTo(455, 210);
+            ctx.lineTo(455, 250);
             ctx.stroke();
             ctx.closePath();
 
             ctx.beginPath();
             ctx.lineWidth = "3";
-            ctx.moveTo(465, 130);
-            ctx.lineTo(465, 170);
+            ctx.moveTo(455, 130);
+            ctx.lineTo(455, 170);
+            ctx.font = "bold 12px Arial";
+            ctx.fillText("n= "+ $('#l1spinner').spinner("value") + "",390,195);
+
+            ctx.font = " bolder 12px Arial";
+            ctx.fillText($('#l2spinner').spinner("value") + ""+  "  kJ",470,160);
+
+            ctx.font = " bold 12px Arial";
+            ctx.fillText($('#l3spinner').spinner("value") + ""+  "  kJ",470,230);
+
+            ctx.font = " bold 12px Arial";
+            ctx.fillText($('#l4spinner').spinner("value") + ""+  " kJ",510,195);
             ctx.stroke();
             ctx.closePath();
 
@@ -313,13 +325,13 @@
     <!--    <div id="div">-->
     <canvas id="simscreen"  height="380px" width="380px"  >
     </canvas>
-    <canvas id="simscreen1"  height="380px" width="545px"  >
+    <canvas id="simscreen1"  height="380px" width="555px"  >
     </canvas>
     <!--        <div id="mydiv"  height="380px" width="390px"></div>-->
     <!--    </div>-->
 
     <div id="spann">
-        <span style="font-size:50px;color:black;">&#8594;</span>
+        <span style="font-size:35px;color:black;">&#8594;</span>
     </div>
 
     <div id="text">
@@ -336,14 +348,14 @@
     <div id="titleincanvas"></div>
     <!-- Region for comment / question prompts -->
     <div id="commentboxleft">
-        <p id="p1" style="line-height:0.2"></p>
-        <p id="p2" style="line-height:0.2"></p>
-        <p id="p3" style="line-height:0.2"></p>
+        <p id="p1" style="line-height:0"></p>
+        <p id="p2" style="line-height:0"></p>
+        <p id="p3" style="line-height:0"></p>
     </div>
 
     <div id="commentboxright">
-        <p id="p4" style="line-height:0.4"></p>
-        <p id="p5" style="line-height:0.4"></p>
+        <p id="p4" style="line-height:0.2"></p>
+        <p id="p5" style="line-height:0.2"></p>
         <p id="p6" style="line-height:0.4"></p>
     </div>
 
@@ -375,6 +387,7 @@
             <br>
         </div>
     </div>
+</div>
     <!-- DND-Title of region for controls display -->
     <div id="ctrltitle">CONTROLS</div>
     <!-- Region for User controls of simulation -->
