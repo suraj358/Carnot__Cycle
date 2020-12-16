@@ -157,12 +157,12 @@
         {
             varchange();
             //Variable r1 slider and number input types
-            $('#l1slider').slider("value", 30);
-            $('#l1spinner').spinner("value", 30);
-            $('#l2slider').slider("value", 30);
-            $('#l2spinner').spinner("value", 30);
-            $('#l3slider').slider("value", 30);
-            $('#l3spinner').spinner("value", 30);
+            $('#l1slider').slider("value", 100);
+            $('#l1spinner').spinner("value", 100);
+            $('#l2slider').slider("value", 200);
+            $('#l2spinner').spinner("value", 200);
+            $('#l3slider').slider("value", 150);
+            $('#l3spinner').spinner("value", 150);
             $('#l4slider').slider("value", 350);
             $('#l4spinner').spinner("value", 350);
             $('#l5slider').slider("value", 0);
@@ -228,7 +228,7 @@
             //Cold reservoir T1
             $( "#l1slider" ).on(  "slide",  function( e, ui ) {$('#l1spinner').spinner("value",ui.value);varupdate();draw1});
             $( "#l1spinner" ).on( "spin",   function( e, ui ) {$('#l1slider').slider("value",ui.value);varupdate();draw1});
-            $( "#l1spinner" ).on( "change", function() {varchange() } );
+            $( "#l1spinner" ).on( "change", function() {varchange(); } );
 
             // Hot reservoir T2
 
@@ -259,7 +259,7 @@
         function varupdate()
         {
             $('#l1slider').slider("value", $('#l1spinner').spinner('value'));
-            A = document.getElementById("l1spinner").value; //updating slider location with change in spinner(debug)
+           A= document.getElementById("l1spinner").value; //updating slider location with change in spinner(debug)
             // p = document.getElementById("l1spinner").value;
             $('#l2slider').slider("value", $('#l2spinner').spinner('value'));  //updating slider location with change in spinner(debug)
             B = document.getElementById("l2spinner").value;
@@ -268,6 +268,11 @@
             $('#l4slider').slider("value", $('#l4spinner').spinner('value'));  //updating slider location with change in spinner(debug)
             D = document.getElementById("l4spinner").value;
             $('#l5slider').slider("value", $('#l5spinner').spinner('value'));  //updating slider location with change in spinner(debug)
+
+            // A=B+AB;
+            // A=B+AB*Math.sin(rad(AB));
+
+
             draw();
             draw0();
         }
@@ -310,10 +315,11 @@
         //     document.getElementById("l1slider").value = p;
         //     varupdate();
         // }
+
     </script>
 </head>
 
-<body onload="varchange();varupdate();varinit();">
+<body onload="varinit();varupdate();">
 <!-- Defining Container for Simulation -->
 <noscript>
     The simulation requires JavaScript to be enabled.
